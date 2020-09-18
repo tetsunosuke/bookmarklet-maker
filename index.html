@@ -1,0 +1,68 @@
+<html>
+<head>
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./node_modules/source-map/dist/source-map.min.js"></script>
+<script src="./node_modules/terser/dist/bundle.min.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+</head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>bookmarkletへの変換</h1>
+            </div>
+        </header>
+        <div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <form>
+          <div class="form-group">
+            <label for="bookmarklet-name">ブックマークレット名</label>
+            <input id="bookmarklet-name" type="text" class="form-control" value="これをブックマークレットに"/>
+          </div>
+          <div class="form-group">
+            <label for="bookmarklet-script">スクリプト</label>
+            <textarea class="form-control" id="bookmarklet-script" rows="5" placeholder="ここにjavascriptコード（javascript:function はいらない) を貼り付け"></textarea>
+          </div>
+          <div class="form-row">
+            <button class="btn btn-primary" id="btn-convert">ブックマークレットに変換</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="output-area">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(function() {
+  const minify = Terser.minify;
+  const doMinify = async function() {
+    const code = $("#bookmarklet-script").val();
+    const result = await minify(code, {sourceMap: false});
+    const minified = `javascript:(function() {${encodeURIComponent(result.code)}})();`;
+    console.log(minified);
+    const outputArea = $("#output-area");
+    outputArea.empty();
+    const a = $('<a />').addClass("btn").addClass("btn-success").attr('href', minified).text($('#bookmarklet-name').val());
+    const helpText = $('<small />').text('これをブックマークツールバーにドラッグ&ドロップ');
+    outputArea.append($('<hr />'));
+    outputArea.append(a);
+    outputArea.append(helpText);
+  };
+  $("#btn-convert").on("click", function(e) {
+      e.preventDefault();
+      doMinify();
+  });
+});
+</script>
+</html>

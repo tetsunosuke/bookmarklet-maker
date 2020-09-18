@@ -1,0 +1,20 @@
+{
+  "name": "bookmarklet-maker",
+  "version": "1.0.0",
+  "description": "bookmarkletを作成します",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetsunosuke/bookmarklet-maker.git"
+  },
+  "author": "ITO Tetsunosuke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tetsunosuke/bookmarklet-maker/issues"
+  },
+  "homepage": "https://github.com/tetsunosuke/bookmarklet-maker#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "terser": "^5.3.2"
+  }
+}
