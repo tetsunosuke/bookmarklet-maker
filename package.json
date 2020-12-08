@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/tetsunosuke/bookmarklet-maker#readme",
   "dependencies": {
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "terser": "^5.5.1"
   }
