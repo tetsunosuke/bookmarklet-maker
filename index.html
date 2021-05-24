@@ -1,10 +1,5 @@
 <html>
 <head>
-<script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./node_modules/source-map/dist/source-map.min.js"></script>
-<script src="./node_modules/terser/dist/bundle.min.js"></script>
-<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
 </head>
     <body>
         <header>
@@ -47,28 +42,5 @@
       <p class=""><a href="https://ytyng.github.io/bookmarklet-script-compress/">Bookmarklet スクリプト変換</a>を参考にさせていただき、<a href="https://github.com/terser/terser">Terser</a>を利用するバージョンにしました</p>
   </div>
 </footer>
-
-
-<script>
-$(function() {
-  const minify = Terser.minify;
-  const doMinify = async function() {
-    const code = $("#bookmarklet-script").val();
-    const result = await minify(code, {sourceMap: false});
-    const minified = `javascript:(function() {${encodeURIComponent(result.code)}})();`;
-    console.log(minified);
-    const outputArea = $("#output-area");
-    outputArea.empty();
-    const a = $('<a />').addClass("btn").addClass("btn-success").attr('href', minified).text($('#bookmarklet-name').val());
-    const helpText = $('<small />').text('これをブックマークツールバーにドラッグ&ドロップ');
-    outputArea.append($('<hr />'));
-    outputArea.append(a);
-    outputArea.append(helpText);
-  };
-  $("#btn-convert").on("click", function(e) {
-      e.preventDefault();
-      doMinify();
-  });
-});
-</script>
+<script src="./dist/main.js"></script>
 </html>
