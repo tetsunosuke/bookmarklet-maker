@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "browserify": "^17.0.0",
-    "css-loader": "^5.2.5",
+    "css-loader": "^6.0.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
