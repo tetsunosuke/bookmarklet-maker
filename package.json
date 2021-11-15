@@ -17,7 +17,7 @@
     "jquery": "^3.6.0",
     "popper": "^1.0.1",
     "popper.js": "^1.16.1",
-    "terser": "^5.7.2"
+    "terser": "^5.10.0"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
